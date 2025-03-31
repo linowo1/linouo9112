@@ -1,0 +1,259 @@
+* {
+  font-family: 標楷體;
+  position: relative;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  padding: 0px; margin: 0px;
+}
+
+body {
+  background-image: url("https://i.pinimg.com/736x/76/e9/ec/76e9ece7190760b057541fb4f3a13b29.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start; /* 將名片放到最左邊 */
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* 添加黑色半透明濾鏡 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+/* 半透明白色背景 */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  transition: background 0.3s;
+}
+
+/* 名片樣式 */
+.namecard {
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #061316;
+  letter-spacing: 1px;
+  font-weight: 100;
+  color: #FCECC9;
+  overflow: hidden;
+  border: solid 1px #0066CC;
+  border-radius: 8px;
+  box-shadow: 10px 10px 15px #003D79;
+  position: relative;
+  transition: 0.3s;
+}
+
+.namecard:hover {
+  background-color: #08181C;
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 20px #002D5B;
+}
+
+/* 讓名稱與圖片區塊分開 */
+h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.namecard h2 span {
+  font-size: 12px;
+}
+
+.namecard h5 {
+  color: #0080FF;
+  font-weight: 500;
+}
+
+.namecard p {
+  font-size: 12px;
+  line-height: 22px;
+}
+
+/* 圖片區塊樣式 */
+.square-images {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+/* 讓圖片根據 .namecard 自适應大小 */
+.square-image {
+  flex: 1 1 60px;
+  max-width: 80px;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 技能區塊 */
+.skills-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.skill {
+  width: 45%;
+}
+
+#courses h4, 
+#skills h4 {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #F5F5DC; /* 改成米白色 */
+}
+
+#courses ul {
+  padding: 0;
+  list-style: none;
+}
+
+#courses li {
+  margin-bottom: 5px;
+}
+
+#skills .skill-bar {
+  margin-bottom: 10px;
+}
+
+#skills .skill-bar label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+#skills .skill-bar .bar {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#skills .skill-bar .level {
+  height: 100%;
+  background-color: #007BFF; /* 改為藍色 */
+  border-radius: 5px;
+  transition: background-position 0.5s ease-in-out;
+}
+
+.namecard:hover #skills .skill-bar .level {
+  animation: waveEffect 1.5s infinite alternate;
+}
+
+@keyframes waveEffect {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 學校網站按鈕 */
+.website-link {
+  margin-top: 15px;
+  text-align: center;
+  position: absolute; /* 使按鈕絕對定位 */
+  bottom: 20px; /* 距離底部20px */
+  left: 30%; /* 向左移動，調整位置 */
+  transform: translateX(-50%); /* 向左移動50%以達到居中效果 */
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #CCCCCC; /* 改為淺灰色 */
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #B0B0B0; /* 懸停時的淺灰色 */
+}
+
+@media (max-width: 600px) {
+  .skills-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .skill {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* 讓圖片容器使用 flex 排列 */
+.square-images {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+/* 設定圓角方形圖片 */
+.square-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* 設定不同圖片 */
+.square-image:nth-child(1) {
+  background-image: url("https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHF4NWN6MGx4NW00c3huMzkxNHZlZndxbHdiYW1sa3NwbWkzcjEzaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ndAvMC5LFPNMCzq7m/giphy.gif");
+}
+
+.square-image:nth-child(2) {
+  background-image: url("https://media.giphy.com/media/2Qs2hKWMvEzdu/giphy.gif?cid=82a1493b7h4alq58d1m0otrzihscasthebkus8as8sihtngd&ep=v1_gifs_trending&rid=giphy.gif&ct=g");
+}
+
+.square-image:nth-child(3) {
+  background-image: url("https://media.giphy.com/media/oF5oUYTOhvFnO/giphy.gif?cid=82a1493b610wa8b7v0jg6uoeod0m8c1u46uwcknotro49aht&ep=v1_gifs_trending&rid=giphy.gif&ct=g");
+}
+
+/* 技能列表樣式 */
+.skills {
+  margin-top: 15px;
+  font-size:  18px;
+}
+
+.skills ul {
+  padding: 0;
+  list-style: none;
+}
+
+.skills li {
+  margin-bottom: 10px;
+}
